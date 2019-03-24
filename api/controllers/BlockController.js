@@ -101,6 +101,7 @@ async postNewBlock(req, res) {
           try {
             await blockchain.addBlock(newBlock);
             mempool.removeValidationReq(req.body.address);
+            mempool.removeMempoolValidReq(req.body.address);
             let height = await blockchain.getBlockHeight();
             blockchain.getBlock(height).then((block) => {
             block.body.star.storyDecoded =hex2ascii(block.body.star.story);

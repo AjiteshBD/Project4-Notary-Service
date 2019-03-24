@@ -80,6 +80,24 @@ class Mempool {
     }
 }
 
+
+removeMempoolValidReq(address) {
+  try {
+    let index = 0;
+    mempoolValid.forEach((req) => {
+
+      if (req.status.address = address) {
+        mempoolValid.splice(index, 1);
+      }
+    });
+    index++;
+  } catch (e) {
+    this.timeoutRequests[address] = null;
+  }
+}
+
+
+
   validateReqByWallet(address, signature) {
   let self = this;
   return new Promise((resolve, reject) => {
